@@ -1,0 +1,24 @@
+name: Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Start Docker services
+      run: docker compose up --build
+
+    - name: Run tests
+      run: pytest
+    
+    - name: Shut down Docker services
+      run: docker compose down
