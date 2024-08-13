@@ -1,4 +1,6 @@
-# Neoway Challenge
+# Neoway Challenge 
+
+[![Pipeline](https://github.com/vhsenna/neoway-challenge/actions/workflows/pipeline.yml/badge.svg)](https://github.com/vhsenna/neoway-challenge/actions/workflows/pipeline.yml)
 
 This project is a service designed to process and validate data from CSV or text files and store the results in a database. The project features a data processor that performs various validations and transformations, ensuring data quality before persisting it. The system leverages a database to maintain data integrity and provide reliable storage.
 
