@@ -7,11 +7,14 @@ def validate_cpf(cpf):
     if cpf == cpf[0] * 11:
         return False
 
-    def calc_digit(t):
-        d = sum((int(cpf[i]) * (t - i) for i in range(t - 1))) % 11
+    def calc_digit(cpf, t):
+        d = sum(int(cpf[i]) * (t - i) for i in range(t - 1)) % 11
         return 0 if d < 2 else 11 - d
 
-    return calc_digit(10) == int(cpf[9]) and calc_digit(11) == int(cpf[10])
+    first_digit = calc_digit(cpf, 10)
+    second_digit = calc_digit(cpf, 11)
+
+    return first_digit == int(cpf[9]) and second_digit == int(cpf[10])
 
 
 # Implement CNPJ validation logic here
@@ -23,8 +26,17 @@ def validate_cnpj(cnpj):
     if cnpj == cnpj[0] * 14:
         return False
 
-    def calc_digit(t):
-        d = sum((int(cnpj[i]) * ((t - i) % 8 + 2) for i in range(t - 2))) % 11
+    def calc_digit(cnpj, t):
+        if t == 13:
+            multipliers = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+        else:
+            multipliers = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+
+        s = sum(int(cnpj[i]) * multipliers[i] for i in range(t - 1))
+        d = s % 11
         return 0 if d < 2 else 11 - d
 
-    return calc_digit(13) == int(cnpj[12]) and calc_digit(14) == int(cnpj[13])
+    first_digit = calc_digit(cnpj, 13)
+    second_digit = calc_digit(cnpj, 14)
+
+    return first_digit == int(cnpj[12]) and second_digit == int(cnpj[13])
