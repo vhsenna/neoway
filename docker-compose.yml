@@ -1,0 +1,36 @@
+services:
+    db:
+        image: postgres:13
+        environment:
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: 12345
+            POSTGRES_DB: neoway
+        volumes:
+            - ./data/entrypoint.sql:/docker-entrypoint-initdb.d/entrypoint.sql
+            - postgres_data:/var/lib/postgresql/data
+        healthcheck:
+            test:
+                [
+                    "CMD-SHELL",
+                    "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}",
+                ]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+
+    app:
+        build: .
+        volumes:
+            - ./data:/app/data
+        environment:
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: 12345
+            POSTGRES_DB: neoway
+            DATABASE_URL: postgresql://admin:12345@db:5432/neoway
+            INPUT_FILE: /app/data/base_test.txt
+        depends_on:
+            db:
+                condition: service_healthy
+
+volumes:
+    postgres_data:
