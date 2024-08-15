@@ -1,4 +1,4 @@
-# Neoway Challenge 
+# Neoway 
 
 [![Pipeline](https://github.com/vhsenna/neoway-challenge/actions/workflows/pipeline.yml/badge.svg)](https://github.com/vhsenna/neoway-challenge/actions/workflows/pipeline.yml)
 
@@ -7,7 +7,7 @@ This project is a service designed to process and validate data from CSV or text
 ## Project Structure
 
 ```bash
-neoway-challenge/
+neoway/
 │
 ├── app/
 │   ├── __init__.py
