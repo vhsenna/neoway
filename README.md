@@ -1,6 +1,6 @@
 # Neoway 
 
-[![Pipeline](https://github.com/vhsenna/neoway-challenge/actions/workflows/pipeline.yml/badge.svg)](https://github.com/vhsenna/neoway-challenge/actions/workflows/pipeline.yml)
+[![Pipeline](https://github.com/vhsenna/neoway/actions/workflows/pipeline.yml/badge.svg)](https://github.com/vhsenna/neoway/actions/workflows/pipeline.yml)
 
 This project is a service designed to process and validate data from CSV or text files and store the results in a database. The project features a data processor that performs various validations and transformations, ensuring data quality before persisting it. The system leverages a database to maintain data integrity and provide reliable storage.
 
@@ -41,8 +41,8 @@ neoway/
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/vhsenna/neoway-challenge.git
-   cd neoway-challenge
+   git clone https://github.com/vhsenna/neoway.git
+   cd neoway
    ```
 
 2. Run the project with Docker Compose:
